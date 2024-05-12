@@ -37,7 +37,7 @@ Against The Ants is a type of tower defense game where players strategically pla
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 ## Author
-- Name: [Your Name](https://github.com/DauDucHieu)
+- Name: [Dau Duc Hieu](https://github.com/DauDucHieu)
 - Email: dauduchieu.ddh775@gmail.com
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
