@@ -3,7 +3,7 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 ## Description
-Pizza Defender is a tower defense game where players strategically place obstacles to prevent waves of ants from stealing pizza and bringing it back to their colony. The game is built using SDL2 and C++.
+Against The Ants is a type of tower defense game where players strategically place obstacles to prevent waves of ants from stealing pizza and bringing it back to their colony. The game is built using SDL2 and C++.
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
