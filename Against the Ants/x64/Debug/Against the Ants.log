@@ -1,0 +1,11 @@
+﻿  NormalAnt.cpp
+C:\Users\Duc Hieu\Desktop\Y1 - T2 - AP - SDL Game\AgainstTheAnts-Last\Against the Ants\Constants.h(14,3): warning C4091: 'static ': ignored on left of 'Constants::SCREEN_STATE' when no variable is declared
+  (compiling source file 'NormalAnt.cpp')
+  
+C:\Users\Duc Hieu\Desktop\Y1 - T2 - AP - SDL Game\AgainstTheAnts-Last\Against the Ants\Constants.h(18,3): warning C4091: 'static ': ignored on left of 'Constants::ANT_TYPE' when no variable is declared
+  (compiling source file 'NormalAnt.cpp')
+  
+C:\Users\Duc Hieu\Desktop\Y1 - T2 - AP - SDL Game\AgainstTheAnts-Last\Against the Ants\Constants.h(22,3): warning C4091: 'static ': ignored on left of 'Constants::TRAP_TYPE' when no variable is declared
+  (compiling source file 'NormalAnt.cpp')
+  
+  Against the Ants.vcxproj -> C:\Users\Duc Hieu\Desktop\Y1 - T2 - AP - SDL Game\AgainstTheAnts-Last\x64\Debug\Against the Ants.exe
