@@ -1,50 +1,57 @@
 ﻿#include "PathFinder.h"
 
-vector<Cell> PathFinder::Find(vector<vector<bool>> matrix, Cell start, Cell end) {
-    int nRows = matrix.size();
-    int nCols = matrix[0].size();
-    
-    vector<Cell> path;
-    vector<vector<bool>> visited(nRows, vector<bool>(nCols, false));
-    vector<vector<Cell>> parent(nRows, vector<Cell>(nCols, Cell(-1, -1)));
-    stack<Cell> stack;
+vector<Cell*> PathFinder::Find(vector<vector<bool>> matrix, int is, int js, int ie, int je) {
 
-    stack.push(start);
+	vector<vector<Cell*>> cells;
+	int rows = matrix.size();
+	int cols = matrix[0].size();
 
-    while (!stack.empty()) {
-        Cell current = stack.top();
-        stack.pop();
+	for (int i = 0; i < rows; i++) {
+		cells.push_back({});
+	}
 
-        visited[current.i][current.j] = true;
+	for (int i = 0; i < rows; i++) {
+		for(int j = 0; j < cols; j++) {
+			cells[i].push_back(new Cell(i, j));
+		}
+	}
 
-        if (current.i == end.i && current.j == end.j) {
-            while (!(current.i == start.i && current.j == start.j)) {
-                path.push_back(current);
-                current = parent[current.i][current.j];
-            }
-            path.push_back(start);
-            reverse(path.begin(), path.end()); // Đảo ngược path để có đường đi từ start đến end
-            return path;
-        }
+	queue<Cell*> queue;
 
-        // Duyệt qua các ô kề của ô hiện tại
-        for (int dx = -1; dx <= 1; ++dx) {
-            for (int dy = -1; dy <= 1; ++dy) {
-                // Loại bỏ trường hợp đi ngang hoặc đi dọc
-                if (dx != 0 && dy != 0) continue;
+	Cell* start = cells[is][js];
+	Cell* end = cells[ie][je];
 
-                int ni = current.i + dx;
-                int nj = current.j + dy;
+	queue.push(start);
+	start->isVisited = true;
 
-                // Kiểm tra ô kề có hợp lệ không
-                if (ni >= 0 && ni < nRows && nj >= 0 && nj < nCols && !visited[ni][nj] && matrix[ni][nj]) {
-                    stack.push(Cell(ni, nj));
-                    parent[ni][nj] = current; // Cập nhật ô cha của ô kề
-                }
-            }
-        }
-    }
+	while (!queue.empty()) {
+		Cell* current = queue.front();
+		queue.pop();
+		for (int i = -1; i <= 1; i++) {
+			for (int j = -1; j <= 1; j++) {
+				int x = current->i + i;
+				int y = current->j + j;
+				if (x < 0 || x >= rows || y < 0 || y >= cols) continue;
+				Cell* next = cells[x][y];
+				if (!next->isVisited) {
+					next->isVisited = true;
+					next->parent = current;
+					queue.push(next);
+				}
+				if (next == end) break;
+			}
+		}
+	}
 
-    // Trường hợp không tìm thấy đường đi từ start đến end
-    return path;
+	vector<Cell*> path;
+	Cell* cell = end;
+	while (cell->parent != start) {
+		path.push_back(cell);
+		cell = cell->parent;
+	}
+
+	reverse(path.begin(), path.end());
+	return path;
 }
+
+
