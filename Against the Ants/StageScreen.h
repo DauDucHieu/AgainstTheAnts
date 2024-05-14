@@ -19,8 +19,6 @@
 
 #include "Random.h"
 
-#include "PathFinder.h"
-
 #include <vector>
 
 class StageScreen {
