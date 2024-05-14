@@ -1,18 +1,39 @@
 ﻿#include "PathFinder.h"
 
-vector<Cell*> PathFinder::Find(vector<vector<bool>> matrix, int is, int js, int ie, int je) {
+vector<Cell*> PathFinder::Find(vector<vector<bool>> matrix, int pis, int pjs, int pie, int pje) {
+	int is = pis / 100;
+	int js = pjs / 100;
+	int ie = pie / 100;
+	int je = pje / 100;
 
-	vector<vector<Cell*>> cells;
 	int rows = matrix.size();
-	int cols = matrix[0].size();
 
-	for (int i = 0; i < rows; i++) {
-		cells.push_back({});
+	if (!rows) return {};
+	int cols = matrix[0].size();
+	if (!cols) return {};
+
+	if (!matrix[ie][je]) {
+		for (int i = -1; i <= 1; i++) {
+			for (int j = -1; j <= 1; j++) {
+				int x = ie + i;
+				int y = je + i;
+				if (x < 0 || x >= rows || y < 0 || y >= cols) continue;
+				if (matrix[x][y]) {
+					ie = x;
+					je = y;
+				}
+			}
+		}
 	}
 
+	if (ie >= rows) ie = rows - 1;
+	if (je >= cols) js = cols - 1;
+
+	vector<vector<Cell*>> cells(rows, vector<Cell*>(cols, nullptr));
+
 	for (int i = 0; i < rows; i++) {
-		for(int j = 0; j < cols; j++) {
-			cells[i].push_back(new Cell(i, j));
+		for (int j = 0; j < cols; j++) {
+			cells[i][j] = new Cell(i, j);
 		}
 	}
 
@@ -43,9 +64,11 @@ vector<Cell*> PathFinder::Find(vector<vector<bool>> matrix, int is, int js, int 
 		}
 	}
 
+	if (!end->isVisited) return {};
+
 	vector<Cell*> path;
 	Cell* cell = end;
-	while (cell->parent && cell->parent != start) {
+	while (cell && cell->parent != start) {
 		path.push_back(cell);
 		cell = cell->parent;
 	}

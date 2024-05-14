@@ -11,6 +11,8 @@
 #include "GameEntitiesScreen.h"
 #include "EndScreen.h"
 
+#include "PathFinder.h"
+
 #include <SDL_mixer.h>
 
 void InitSDL() {
@@ -34,16 +36,7 @@ void Loop() {
 				Constants::MOUSE_X = e.motion.x;
 				Constants::MOUSE_Y = e.motion.y;
 				break;
-			/*case SDL_MOUSEBUTTONDOWN:
-				StageScreen::AddTrap(
-					Constants::MOUSE_X,
-					Constants::MOUSE_Y
-				);
-				break;*/
 		}
-
-		//cout << Constants::MOUSE_X << " " << Constants::MOUSE_Y << endl;
-
 
 		switch (GM::screenState) {
 			case Constants::SS_MENU:

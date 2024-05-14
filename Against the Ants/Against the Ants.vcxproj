@@ -30,6 +30,7 @@
     <ClCompile Include="Ant.cpp" />
     <ClCompile Include="AntPooling.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="Draw.cpp" />
     <ClCompile Include="EndScreen.cpp" />
@@ -56,6 +57,7 @@
     <ClInclude Include="Ant.h" />
     <ClInclude Include="AntPooling.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Cell.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Draw.h" />
     <ClInclude Include="EndScreen.h" />

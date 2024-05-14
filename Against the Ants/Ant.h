@@ -52,6 +52,7 @@ public:
 	virtual void Move();
 	virtual void MoveAnimation();
 	virtual void LookAt(Vector lookVector);
+	virtual void UpdatePath(vector<vector<bool>> map, Vector pizzaPosition);
 
 	Vector GetPosition();
 

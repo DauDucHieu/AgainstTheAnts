@@ -27,9 +27,9 @@ Ant* StageScreen::antBringPizza = nullptr;
 int StageScreen::antHpDown = 1;
 int StageScreen::trapHpDown = 1;
 
-int StageScreen::normalAntRate = 60;
-int StageScreen::speedyAntRate = 30;
-int StageScreen::smartAntRate = 10;
+int StageScreen::normalAntRate = 0;
+int StageScreen::speedyAntRate = 0;
+int StageScreen::smartAntRate = 100;
 
 int StageScreen::pondTrapRate = 60;
 int StageScreen::honeyTrapRate = 30;
@@ -69,8 +69,8 @@ void StageScreen::RandomTrapRate() {
 	StageScreen::randomTrapRateTime = 0;
 	StageScreen::randomTrapRateDelay = Random::GetRandomNumber(1.0, 3.0);
 
-	StageScreen::pondTrapRate = Random::GetRandomNumber(20, 70);
-	StageScreen::honeyTrapRate = Random::GetRandomNumber(20, 50);
+	StageScreen::pondTrapRate = Random::GetRandomNumber(0, 0);
+	StageScreen::honeyTrapRate = Random::GetRandomNumber(0, 0);
 	if (StageScreen::pondTrapRate + StageScreen::honeyTrapRate > 100) {
 		StageScreen::pondTrapRate /= 1.5;
 		StageScreen::honeyTrapRate /= 1.5;
@@ -116,7 +116,6 @@ void StageScreen::TrapEffectToAnt() {
 			Vector dis = trap->GetPosition() - ant->GetPosition();
 			if (dis.GetMagnitude() <= StageScreen::trapRadius) {
 				trap->EffectToAnt(ant);
-				cout << "effect\n";
 			}
 			else {
 				if (!ant->IsEffected()) {
@@ -262,6 +261,11 @@ void StageScreen::DeleteDeadAnts() {
 		if (StageScreen::ants[i]->IsDead()) {
 			if (StageScreen::ants[i] == StageScreen::antBringPizza) {
 				StageScreen::antBringPizza = nullptr;
+				cout << "Update\n";
+				vector<vector<bool>> map = StageScreen::GetMap();
+				for (Ant* ant : StageScreen::ants) {
+					ant->UpdatePath(map, StageScreen::pizzaPosition);
+				}
 			}
 			StageScreen::ants[i]->Dead();
 			StageScreen::ants.erase(StageScreen::ants.begin() + i);
@@ -294,6 +298,10 @@ void StageScreen::UpdateAnts() {
 		Vector dis = ant->GetPosition() - StageScreen::pizzaPosition;
 		if (!StageScreen::antBringPizza && dis.GetMagnitude() < StageScreen::pizzaSize / 2) {
 			StageScreen::antBringPizza = ant;
+
+			for (Ant* ant : StageScreen::ants) {
+				ant->UpdatePath({}, StageScreen::pizzaPosition);
+			}
 		}
 	}
 }
@@ -401,6 +409,10 @@ void StageScreen::SpawnAnt() {
 			break;
 		case Constants::AT_SMART:
 			newAnt = new SmartAnt(spawnX, spawnY);
+			if (!StageScreen::antBringPizza) {
+				vector<vector<bool>> map = StageScreen::GetMap();
+				newAnt->UpdatePath(map, StageScreen::pizzaPosition);
+			}
 			break;
 	}
 	StageScreen::ants.push_back(newAnt);
@@ -420,6 +432,13 @@ void StageScreen::AddTrap(double addX, double addY, Constants::TRAP_TYPE trapTyp
 		break;
 	}
 	StageScreen::traps.push_back(newTrap);
+
+	if (!StageScreen::antBringPizza) {
+		vector<vector<bool>> map = StageScreen::GetMap();
+		for (Ant* ant : StageScreen::ants) {
+			ant->UpdatePath(map, StageScreen::pizzaPosition);
+		}
+	}
 }
 
 
@@ -437,26 +456,57 @@ void StageScreen::Reset() {
 	StageScreen::antBringPizza = nullptr;
 
 	StageScreen::isReset = true;
+
+	StageScreen::SpawnAnt();
+	StageScreen::AddTrap(200, 100, Constants::TT_POND);
+	
+	vector<vector<bool>> map = StageScreen::GetMap();
+	for (Ant* ant : StageScreen::ants) {
+		ant->UpdatePath(map, StageScreen::pizzaPosition);
+	}
+
 }
 
 
 vector<vector<bool>> StageScreen::GetMap() {
 	double antSize = 10;
+	int cellSize = 100;
 
-	vector<vector<bool>> map(Constants::WINDOW_WIDTH, vector<bool>(Constants::WINDOW_HEIGHT, true));
+	int rows = Constants::WINDOW_WIDTH / cellSize;
+	int cols = Constants::WINDOW_HEIGHT / cellSize;
 
-	for (int i = 0; i < Constants::WINDOW_WIDTH; i++) {
-		for (int j = 0; j < Constants::WINDOW_HEIGHT; j++) {
-			Vector pixel(i, j);
+	vector<vector<bool>> map(rows, vector<bool>(cols, true));
+
+	cout << StageScreen::pizzaSize / 2 << endl;
+
+	cout << "\n\n\n";
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < cols; j++) {
+			Vector pixel(i * cellSize + cellSize / 2, j * cellSize + cellSize / 2);	
 			for (Trap* trap : StageScreen::traps) {
-				Vector dis = trap->GetPosition() - pixel;
-				if (dis.GetMagnitude() <= StageScreen::pizzaSize + antSize) {
+				
+				Vector trapPos = trap->GetPosition();
+
+				Vector dis = trapPos - pixel;
+				if (dis.GetMagnitude() < StageScreen::pizzaSize) {
 					map[i][j] = false;
 				}
-			}
 
+			}
 		}
+
+		cout << endl;
 	}
+	cout << "\n\n\n";
+
+	cout << "\n\n\n";
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < cols; j++) {
+			cout << map[i][j] << " ";
+		}
+		cout << endl;
+	}
+	cout << "\n\n\n";
 
 	return map;
 }
