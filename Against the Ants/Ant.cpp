@@ -132,3 +132,7 @@ bool Ant::IsDead() {
 void Ant::Killed() {
 	this->currentHp = 0;
 }
+
+void Ant::UpdatePath(vector<vector<bool>> map, Vector pizzaPosition) {
+
+}
