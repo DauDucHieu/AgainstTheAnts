@@ -42,7 +42,7 @@ Against The Ants is a type of tower defense game where players strategically pla
 |---------------|----------------------------|------------------|--------------------| ----------------------| 
 | **Normal Ant**| Random Move                | Average          | Average            |                       |
 | **Speedy Ant**| Random Move                | Low              | High               |                       |
-| **Smart Ant** | Random Move / Path Finding | Low              | Average            | If Pizza is not carried by other ants, use the BFS algorithm to find a path to the pizza without colliding with traps. <br>Else Random Move |
+| **Smart Ant** | Random Move / Path Finding | Low              | Average            | If Pizza is not carried by other ants, use the BFS algorithm to find a path to the pizza without colliding with traps. <br>Else Random Move. |
 ### Traps
 |               |   Effect           | Active Time|
 |---------------|--------------------|------------|
@@ -51,8 +51,8 @@ Against The Ants is a type of tower defense game where players strategically pla
 | **Black Hole**| Kill Ants directly | Low        |
 
 ### Game Mechanics
-- Random Spawn Ants after time
-- Random Set Appearence Rate of Traps
+- Random Spawn Ants after time.
+- Random Set Appearence Rate of Traps after a time.
 
 ### Algorithms
 - BFS (Breadth-first search): PathFinding
