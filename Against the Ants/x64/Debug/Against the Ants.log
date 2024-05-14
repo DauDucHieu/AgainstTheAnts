@@ -1,19 +1,11 @@
-﻿  StageScreen.cpp
-C:\Users\Duc Hieu\Desktop\againsttheants\Against the Ants\Constants.h(14,3): warning C4091: 'static ': ignored on left of 'Constants::SCREEN_STATE' when no variable is declared
-  (compiling source file 'StageScreen.cpp')
+﻿  GameEntitiesScreen.cpp
+C:\Users\Duc Hieu\Desktop\ata\a1\AgainstTheAnts\Against the Ants\Constants.h(14,3): warning C4091: 'static ': ignored on left of 'Constants::SCREEN_STATE' when no variable is declared
+  (compiling source file 'GameEntitiesScreen.cpp')
   
-C:\Users\Duc Hieu\Desktop\againsttheants\Against the Ants\Constants.h(18,3): warning C4091: 'static ': ignored on left of 'Constants::ANT_TYPE' when no variable is declared
-  (compiling source file 'StageScreen.cpp')
+C:\Users\Duc Hieu\Desktop\ata\a1\AgainstTheAnts\Against the Ants\Constants.h(18,3): warning C4091: 'static ': ignored on left of 'Constants::ANT_TYPE' when no variable is declared
+  (compiling source file 'GameEntitiesScreen.cpp')
   
-C:\Users\Duc Hieu\Desktop\againsttheants\Against the Ants\Constants.h(22,3): warning C4091: 'static ': ignored on left of 'Constants::TRAP_TYPE' when no variable is declared
-  (compiling source file 'StageScreen.cpp')
+C:\Users\Duc Hieu\Desktop\ata\a1\AgainstTheAnts\Against the Ants\Constants.h(22,3): warning C4091: 'static ': ignored on left of 'Constants::TRAP_TYPE' when no variable is declared
+  (compiling source file 'GameEntitiesScreen.cpp')
   
-C:\Users\Duc Hieu\Desktop\againsttheants\Against the Ants\StageScreen.cpp(75,32): warning C4244: '/=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Duc Hieu\Desktop\againsttheants\Against the Ants\StageScreen.cpp(76,33): warning C4244: '/=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Duc Hieu\Desktop\againsttheants\Against the Ants\StageScreen.cpp(85,8): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Duc Hieu\Desktop\againsttheants\Against the Ants\StageScreen.cpp(90,12): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Duc Hieu\Desktop\againsttheants\Against the Ants\StageScreen.cpp(228,40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\Duc Hieu\Desktop\againsttheants\Against the Ants\StageScreen.cpp(227,40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\Duc Hieu\Desktop\againsttheants\Against the Ants\StageScreen.cpp(408,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Duc Hieu\Desktop\againsttheants\Against the Ants\StageScreen.cpp(409,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  Against the Ants.vcxproj -> C:\Users\Duc Hieu\Desktop\againsttheants\x64\Debug\Against the Ants.exe
+  Against the Ants.vcxproj -> C:\Users\Duc Hieu\Desktop\ata\a1\AgainstTheAnts\x64\Debug\Against the Ants.exe
