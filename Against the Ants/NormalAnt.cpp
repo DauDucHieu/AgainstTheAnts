@@ -10,7 +10,7 @@ NormalAnt::NormalAnt(double x, double y) : Ant::Ant(x, y) {
 
 void NormalAnt::UpdateMoveVector() {
 	double moveSpeed = this->speed + this->buffSpeed;
-	double minSpeed = 0.75;
+	double minSpeed = 0.9;
 	moveSpeed = moveSpeed >= minSpeed ? moveSpeed : minSpeed;
 	this->moveVector.ChangeLength(moveSpeed);
 }
@@ -49,6 +49,5 @@ void NormalAnt::Update() {
 void NormalAnt::SetBuffSpeed(double buff) {
 	this->buffSpeed = buff;
 	this->UpdateMoveVector();
-	//cout << "speed: " << this->moveVector.GetMagnitude() << endl;
 }
 

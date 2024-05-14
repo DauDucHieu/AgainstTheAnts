@@ -8,7 +8,7 @@ void SmartAnt::MoveTo(Vector target) {
 	Vector move = target - this->position;
 	if (move.GetMagnitude() <= 3) return;
 	move.ChangeLength(this->speed);
-	this->LookAt(this->position + move);
+	this->LookAt(move);
 	this->position += move;
 }
 
@@ -36,11 +36,9 @@ void SmartAnt::RandomMove() {
 void SmartAnt::Move() {
 	if (this->path.size() <= 0) {
 		this->RandomMove();
-		//cout << "radom move\n";
 	}
 	else {
 		this->SmartMove();
-		//cout << "Smart move\n";
 	}
 	this->MoveAnimation();
 }
@@ -56,9 +54,11 @@ void SmartAnt::UpdatePath(vector<vector<bool>> map, Vector pizzaPosition) {
 		return;
 	}
 
+	int cellSize = 100;
+
 	for (int i = 0; i < cells.size(); i++) {
 		Cell* cell = cells[i];
-		Vector pos(cell->i * 100, cell->j * 100);
+		Vector pos(cell->i * cellSize, cell->j * cellSize);
 		this->path.push_back(pos);
 	}
 

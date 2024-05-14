@@ -1,10 +1,12 @@
 ﻿#include "PathFinder.h"
 
 vector<Cell*> PathFinder::Find(vector<vector<bool>> matrix, int pis, int pjs, int pie, int pje) {
-	int is = pis / 100;
-	int js = pjs / 100;
-	int ie = pie / 100;
-	int je = pje / 100;
+	int cellSize = 100;
+
+	int is = pis / cellSize;
+	int js = pjs / cellSize;
+	int ie = pie / cellSize;
+	int je = pje / cellSize;
 
 	int rows = matrix.size();
 

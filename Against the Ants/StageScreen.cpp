@@ -27,9 +27,9 @@ Ant* StageScreen::antBringPizza = nullptr;
 int StageScreen::antHpDown = 1;
 int StageScreen::trapHpDown = 1;
 
-int StageScreen::normalAntRate = 0;
-int StageScreen::speedyAntRate = 0;
-int StageScreen::smartAntRate = 100;
+int StageScreen::normalAntRate = 60;
+int StageScreen::speedyAntRate = 20;
+int StageScreen::smartAntRate = 20;
 
 int StageScreen::pondTrapRate = 60;
 int StageScreen::honeyTrapRate = 30;
@@ -69,8 +69,8 @@ void StageScreen::RandomTrapRate() {
 	StageScreen::randomTrapRateTime = 0;
 	StageScreen::randomTrapRateDelay = Random::GetRandomNumber(1.0, 3.0);
 
-	StageScreen::pondTrapRate = Random::GetRandomNumber(0, 0);
-	StageScreen::honeyTrapRate = Random::GetRandomNumber(0, 0);
+	StageScreen::pondTrapRate = Random::GetRandomNumber(0, 70);
+	StageScreen::honeyTrapRate = Random::GetRandomNumber(0, 50);
 	if (StageScreen::pondTrapRate + StageScreen::honeyTrapRate > 100) {
 		StageScreen::pondTrapRate /= 1.5;
 		StageScreen::honeyTrapRate /= 1.5;
@@ -394,7 +394,7 @@ void StageScreen::SpawnAnt() {
 	if (StageScreen::spawnAntTime < StageScreen::spawnAntDelay) return;
 	StageScreen::spawnAntTime = 0;
 
-	StageScreen::spawnAntDelay = Random::GetRandomNumber(1.0, 2.0);
+	StageScreen::spawnAntDelay = Random::GetRandomNumber(2.0, 6.0);
 
 	Ant* newAnt;
 	Constants::ANT_TYPE antType = StageScreen::GetRandAntType();
@@ -456,15 +456,6 @@ void StageScreen::Reset() {
 	StageScreen::antBringPizza = nullptr;
 
 	StageScreen::isReset = true;
-
-	StageScreen::SpawnAnt();
-	StageScreen::AddTrap(200, 100, Constants::TT_POND);
-	
-	vector<vector<bool>> map = StageScreen::GetMap();
-	for (Ant* ant : StageScreen::ants) {
-		ant->UpdatePath(map, StageScreen::pizzaPosition);
-	}
-
 }
 
 
