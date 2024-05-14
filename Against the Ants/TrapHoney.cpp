@@ -5,7 +5,6 @@ TrapHoney::TrapHoney(double x, double y, double radius) : Trap(x, y, radius) {
 }
 
 void TrapHoney::EffectToAnt(Ant* ant) {
-	cout << "Honeyeeeeeeeeeeee\n";
 	ant->SetBuffHp(20);
 	ant->Effected();
 }

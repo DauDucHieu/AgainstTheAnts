@@ -1,8 +1,8 @@
 #include "EndScreen.h"
 
 Button* EndScreen::playAgain = new Button(
-	"Play Again",
-	Constants::WINDOW_WIDTH / 2, 350, 250, 80
+	"Back to Menu",
+	Constants::WINDOW_WIDTH / 2, 350, 300, 80
 );
 
 string EndScreen::text = "";

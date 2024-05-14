@@ -7,7 +7,7 @@ Button* GameEntitiesScreen::backButton = new Button(
 
 void GameEntitiesScreen::Render() {
 	Draw::FullImage(
-		"resources/sprites/gameentities.png",
+		"resources/sprites/entities.png",
 		{
 			Constants::WINDOW_WIDTH / 2,
 			Constants::WINDOW_HEIGHT / 2,

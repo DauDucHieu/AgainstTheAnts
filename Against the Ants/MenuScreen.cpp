@@ -1,15 +1,15 @@
 #include "MenuScreen.h"
 
 Button* MenuScreen::playButton = new Button(
-	"Play", 250, 250, 300, 75
+	"Play", 250, 250, 250, 75
 );
 
 Button* MenuScreen::gameRulesButton = new Button(
-	"Game Rules", 250, 350, 300, 75
+	"Game Rules", 250, 350, 250, 75
 );
 
 Button* MenuScreen::gameEntitiesButton = new Button(
-	"Game's Entities", 250, 450, 300, 75
+	"Entities", 250, 450, 250, 75
 );
 
 

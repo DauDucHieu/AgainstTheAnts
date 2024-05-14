@@ -44,8 +44,6 @@ void SmartAnt::Move() {
 }
 
 void SmartAnt::UpdatePath(vector<vector<bool>> map, Vector pizzaPosition) {
-	cout << "update path\n";
-
 	vector<Cell*> cells = PathFinder::Find(map, this->position.GetX(), this->position.GetY(), pizzaPosition.GetX(), pizzaPosition.GetY());
 	
 	this->path.clear();
@@ -63,5 +61,4 @@ void SmartAnt::UpdatePath(vector<vector<bool>> map, Vector pizzaPosition) {
 	}
 
 	this->path.push_back(pizzaPosition);
-
 }

@@ -12,7 +12,7 @@ private:
 	int w, h;
 	string text;
 	int textSize = 30;
-	int borderWidth = 4;
+	int borderWidth = 2;
 	SDL_Color borderColor = { 70, 255, 100 };
 	SDL_Color borderColorOnHover = { 255, 75, 50 };
 	SDL_Color bgColor = { 255, 255, 255 };

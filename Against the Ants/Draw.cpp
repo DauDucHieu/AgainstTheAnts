@@ -37,7 +37,7 @@ SDL_Texture* Draw::GetTexture(string src) {
 		return Draw::loadedTexture[loadedSrc[src]];
 	}
 
-	cout << "Load image at src: " << src << endl;
+	//cout << "Load image at src: " << src << endl;
 
 	SDL_Surface* surface = IMG_Load(src.c_str());
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(SDLConstants::renderer, surface);

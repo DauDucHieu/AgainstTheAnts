@@ -174,10 +174,10 @@ void StageScreen::RenderPizza() {
 }
 
 void StageScreen::RenderUnableTrap() {
-	SDL_Texture* texture = Draw::GetTexture("resources/sprites/cancel.png");
-	SDL_SetTextureAlphaMod(texture, 100);
+	SDL_Texture* texture = Draw::GetTexture("resources/sprites/redrange.png");
+	SDL_SetTextureAlphaMod(texture, 150);
 	Draw::FullImage(
-		"resources/sprites/cancel.png",
+		"resources/sprites/redrange.png",
 		{
 			(int)StageScreen::unableTrapPosition.GetX(),
 			(int)StageScreen::unableTrapPosition.GetY(),
@@ -200,7 +200,7 @@ void StageScreen::RenderTraping() {
 			}
 		);
 		Draw::FullImage(
-			"resources/sprites/cancel.png",
+			"resources/sprites/redrange.png",
 			{
 				(int)(StageScreen::trapIconPosition.GetX()),
 				(int)(StageScreen::trapIconPosition.GetY()),
@@ -261,11 +261,12 @@ void StageScreen::DeleteDeadAnts() {
 		if (StageScreen::ants[i]->IsDead()) {
 			if (StageScreen::ants[i] == StageScreen::antBringPizza) {
 				StageScreen::antBringPizza = nullptr;
-				cout << "Update\n";
+
 				vector<vector<bool>> map = StageScreen::GetMap();
 				for (Ant* ant : StageScreen::ants) {
 					ant->UpdatePath(map, StageScreen::pizzaPosition);
 				}
+
 			}
 			StageScreen::ants[i]->Dead();
 			StageScreen::ants.erase(StageScreen::ants.begin() + i);
@@ -282,6 +283,12 @@ void StageScreen::DeleteDeadTraps() {
 		if (StageScreen::traps[i]->IsDead()) {
 			StageScreen::traps[i]->Dead();
 			StageScreen::traps.erase(StageScreen::traps.begin() + i);
+
+			vector<vector<bool>> map = StageScreen::GetMap();
+			for (Ant* ant : StageScreen::ants) {
+				ant->UpdatePath(map, StageScreen::pizzaPosition);
+			}
+
 		}
 		else {
 			i++;
@@ -394,7 +401,7 @@ void StageScreen::SpawnAnt() {
 	if (StageScreen::spawnAntTime < StageScreen::spawnAntDelay) return;
 	StageScreen::spawnAntTime = 0;
 
-	StageScreen::spawnAntDelay = Random::GetRandomNumber(2.0, 6.0);
+	StageScreen::spawnAntDelay = Random::GetRandomNumber(1.0, 5.0);
 
 	Ant* newAnt;
 	Constants::ANT_TYPE antType = StageScreen::GetRandAntType();
@@ -454,6 +461,7 @@ void StageScreen::Reset() {
 	StageScreen::isTrapable = true;
 
 	StageScreen::antBringPizza = nullptr;
+	StageScreen::isTraping = false;
 
 	StageScreen::isReset = true;
 }
@@ -468,9 +476,6 @@ vector<vector<bool>> StageScreen::GetMap() {
 
 	vector<vector<bool>> map(rows, vector<bool>(cols, true));
 
-	cout << StageScreen::pizzaSize / 2 << endl;
-
-	cout << "\n\n\n";
 	for (int i = 0; i < rows; i++) {
 		for (int j = 0; j < cols; j++) {
 			Vector pixel(i * cellSize + cellSize / 2, j * cellSize + cellSize / 2);	
@@ -485,10 +490,7 @@ vector<vector<bool>> StageScreen::GetMap() {
 
 			}
 		}
-
-		cout << endl;
 	}
-	cout << "\n\n\n";
 
 	cout << "\n\n\n";
 	for (int i = 0; i < rows; i++) {
@@ -501,4 +503,3 @@ vector<vector<bool>> StageScreen::GetMap() {
 
 	return map;
 }
-

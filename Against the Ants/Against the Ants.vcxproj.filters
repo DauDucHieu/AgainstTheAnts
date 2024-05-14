@@ -72,9 +72,6 @@
     <ClCompile Include="TrapHoney.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AntPooling.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TrapBlackHole.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -144,9 +141,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TrapHoney.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AntPooling.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TrapBlackHole.h">
