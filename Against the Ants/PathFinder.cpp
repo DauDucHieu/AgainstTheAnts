@@ -33,7 +33,7 @@ vector<Cell*> PathFinder::Find(vector<vector<bool>> matrix, int is, int js, int 
 				int y = current->j + j;
 				if (x < 0 || x >= rows || y < 0 || y >= cols) continue;
 				Cell* next = cells[x][y];
-				if (!next->isVisited) {
+				if (!next->isVisited && matrix[x][y]) {
 					next->isVisited = true;
 					next->parent = current;
 					queue.push(next);
