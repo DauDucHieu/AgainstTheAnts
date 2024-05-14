@@ -45,7 +45,7 @@ vector<Cell*> PathFinder::Find(vector<vector<bool>> matrix, int is, int js, int 
 
 	vector<Cell*> path;
 	Cell* cell = end;
-	while (cell->parent != start) {
+	while (cell->parent && cell->parent != start) {
 		path.push_back(cell);
 		cell = cell->parent;
 	}

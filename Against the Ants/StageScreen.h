@@ -19,6 +19,8 @@
 
 #include "Random.h"
 
+#include "PathFinder.h"
+
 #include <vector>
 
 class StageScreen {
@@ -88,6 +90,7 @@ private:
 	static void UpdateTraping();
 	static void UpdateWinTime();
 
+
 public:
 	static bool isReset;
 	static void Render();
@@ -100,5 +103,6 @@ public:
 	);
 
 	static void Reset();
-};
 
+	static vector<vector<bool>> GetMap();
+};

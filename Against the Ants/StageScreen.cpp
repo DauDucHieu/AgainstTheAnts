@@ -5,7 +5,7 @@ bool StageScreen::isReset = false;
 vector<Ant*> StageScreen::ants;
 vector<Trap*> StageScreen::traps;
 
-double StageScreen::winTimeLimit = 20;
+double StageScreen::winTimeLimit = 120;
 double StageScreen::winTime = 0;
 
 double StageScreen::trapRadius = 50;
@@ -69,8 +69,8 @@ void StageScreen::RandomTrapRate() {
 	StageScreen::randomTrapRateTime = 0;
 	StageScreen::randomTrapRateDelay = Random::GetRandomNumber(1.0, 3.0);
 
-	StageScreen::pondTrapRate = Random::GetRandomNumber(0, 70);
-	StageScreen::honeyTrapRate = Random::GetRandomNumber(0, 50);
+	StageScreen::pondTrapRate = Random::GetRandomNumber(20, 70);
+	StageScreen::honeyTrapRate = Random::GetRandomNumber(20, 50);
 	if (StageScreen::pondTrapRate + StageScreen::honeyTrapRate > 100) {
 		StageScreen::pondTrapRate /= 1.5;
 		StageScreen::honeyTrapRate /= 1.5;
@@ -438,3 +438,26 @@ void StageScreen::Reset() {
 
 	StageScreen::isReset = true;
 }
+
+
+vector<vector<bool>> StageScreen::GetMap() {
+	double antSize = 10;
+
+	vector<vector<bool>> map(Constants::WINDOW_WIDTH, vector<bool>(Constants::WINDOW_HEIGHT, true));
+
+	for (int i = 0; i < Constants::WINDOW_WIDTH; i++) {
+		for (int j = 0; j < Constants::WINDOW_HEIGHT; j++) {
+			Vector pixel(i, j);
+			for (Trap* trap : StageScreen::traps) {
+				Vector dis = trap->GetPosition() - pixel;
+				if (dis.GetMagnitude() <= StageScreen::pizzaSize + antSize) {
+					map[i][j] = false;
+				}
+			}
+
+		}
+	}
+
+	return map;
+}
+
