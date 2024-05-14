@@ -3,7 +3,7 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 ## Description
-Against The Ants is a type of tower defense game where players strategically place obstacles to prevent waves of ants from stealing pizza and bringing it back to their colony. The game is built using SDL2 and C++.
+**Against The Ants** is a type of tower defense game where players strategically place obstacles to prevent waves of ants from stealing pizza and bringing it back to their colony. The game is built using SDL2 and C++.
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
@@ -42,12 +42,12 @@ Against The Ants is a type of tower defense game where players strategically pla
 |---------------|----------------------------|------------------|--------------------| ----------------------| 
 | **Normal Ant**| Random Move                | Average          | Average            |                       |
 | **Speedy Ant**| Random Move                | Low              | High               |                       |
-| **Smart Ant** | Random Move / Path Finding | Low              | Average            | If Pizza is not carried by other ants, use the BFS algorithm to find a path to the pizza without colliding with traps. <br>Else Random Move. |
+| **Smart Ant** | Random Move / Path Finding | Low              | Average            | If Pizza is not carried by another ants, use the BFS algorithm to find a path to the pizza without colliding with traps. <br>Else Random Move. |
 ### Traps
 |               |   Effect           | Active Time|
 |---------------|--------------------|------------|
 | **Pond**      | Slowdown Ants      | High       |
-| **Honey**     | Heal HP Ants       | High       |
+| **Honey**     | Heal Ants's HP     | High       |
 | **Black Hole**| Kill Ants directly | Low        |
 
 ### Game Mechanics
