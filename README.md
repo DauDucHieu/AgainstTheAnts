@@ -64,11 +64,8 @@ Against The Ants is a type of tower defense game where players strategically pla
 - BFS: [Wikipedia-Vi](https://vi.wikipedia.org/wiki/T%C3%ACm_ki%E1%BA%BFm_theo_chi%E1%BB%81u_r%E1%BB%99ng), [Wikipedia-En](https://en.wikipedia.org/wiki/Breadth-first_search)
 - Idea inspiration: [Game "Against the Ants" in Google Play Store](https://play.google.com/store/apps/details?id=com.themaniacs.againsttheants&hl=vi&gl=US)
 
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
 ## Author
 - Name: [Dau Duc Hieu](https://github.com/DauDucHieu)
 - Email: dauduchieu.ddh775@gmail.com
-
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-
-## More
-*You also can download this project in Google Drive [Link](https://drive.google.com/file/d/1A6TAlfIlRj7oRSwX45rOxVCk-K27auVD/view?usp=sharing)*
